@@ -18,7 +18,7 @@ const { data: springs, status } = await useFetch("/api/springs", {
     </div>
  
     <!-- Loading state -->
-    <div v-if="status === 'pending'">
+    <div v-if="status === 'pending' || status === 'idle'">
       <LoadingStateBadge />
     </div>
  

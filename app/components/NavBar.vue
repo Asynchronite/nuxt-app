@@ -16,5 +16,9 @@ const items = ref<NavigationMenuItem[]>([
 </script>
 
 <template>
-  <NuxtNavigationMenu :items="items" />
+  <NuxtNavigationMenu
+    :items="items"
+    class="justify-center w-full"
+    :ui="{ link: 'text-lg gap-2', linkLeadingIcon: 'size-6', item: 'py-3' }"
+  />
 </template>

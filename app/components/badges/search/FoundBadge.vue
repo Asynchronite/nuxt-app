@@ -5,7 +5,7 @@ const { count } = defineProps<{
 </script>
 
 <template>
-  <NuxtBadge icon="i-lucide-search-check" size="md" color="success" variant="solid">
+  <NuxtBadge icon="i-lucide-search-check" size="lg" color="success" variant="solid">
     Found {{ count }} {{ count === 1 ? 'result' : 'results' }}
   </NuxtBadge>
 </template>
