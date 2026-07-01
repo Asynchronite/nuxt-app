@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <BadgesWildBadge v-if="type === 'wild'" />
-  <BadgesDevelopedBadge v-else-if="type === 'developed'" />
-  <BadgesResortBadge v-else-if="type === 'resort'" />
+  <BadgesSpringTypesWildBadge v-if="type === 'wild'" />
+  <BadgesSpringTypesDevelopedBadge v-else-if="type === 'developed'" />
+  <BadgesSpringTypesResortBadge v-else-if="type === 'resort'" />
 </template>

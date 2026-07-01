@@ -14,56 +14,70 @@ if (error.value) {
 </script>
 
 <template>
-  <div v-if="spring">
-    <NuxtLink to="/springs">
-      &larr; Back to all springs
-    </NuxtLink>
- 
-    <div>
-      <div>
-        <h1>
-          {{ spring.name }}
-        </h1>
-        <BadgesSpringTypeBadge :type="spring.type" />
-      </div>
-      <p>
-        {{ spring.description }}
-      </p>
+  <div v-if="spring" class="max-w-3xl mx-auto py-6">
+    <NuxtButton
+      to="/springs"
+      icon="i-lucide-arrow-left"
+      variant="ghost"
+      color="neutral"
+      class="mb-4"
+    >
+      Back to all springs
+    </NuxtButton>
+
+    <div class="flex items-center gap-3">
+      <h1 class="mb-0">
+        {{ spring.name }}
+      </h1>
+      <BadgesSpringTypeBadge :type="spring.type" />
     </div>
- 
-    <div>
-      <div>
-        <p>
+    <p class="text-muted">
+      {{ spring.description }}
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <NuxtCard>
+        <div class="flex items-center gap-2 text-sm text-muted mb-1">
+          <NuxtIcon name="i-lucide-map-pin" class="size-4" />
           Location
-        </p>
-        <p>
+        </div>
+        <p class="font-semibold mb-0">
           {{ spring.location.region }}, {{ spring.location.country }}
         </p>
-      </div>
-      <div>
-        <p>
+      </NuxtCard>
+      <NuxtCard>
+        <div class="flex items-center gap-2 text-sm text-muted mb-1">
+          <NuxtIcon name="i-lucide-thermometer" class="size-4" />
           Temperature
-        </p>
-        <p>
+        </div>
+        <p class="font-semibold mb-0">
           {{ spring.temperature.min }}–{{ spring.temperature.max }}°F
         </p>
-      </div>
-      <div>
-        <p>
+      </NuxtCard>
+      <NuxtCard>
+        <div class="flex items-center gap-2 text-sm text-muted mb-1">
+          <NuxtIcon name="i-lucide-mountain" class="size-4" />
           Elevation
-        </p>
-        <p>
+        </div>
+        <p class="font-semibold mb-0">
           {{ spring.elevation.toLocaleString() }} ft
         </p>
-      </div>
+      </NuxtCard>
     </div>
- 
+
     <div>
       <h2>
         Features
       </h2>
-      <div>
-        {{ spring.features.join(", ") }}
+      <div class="flex flex-wrap gap-2">
+        <NuxtBadge
+          v-for="feature in spring.features"
+          :key="feature"
+          variant="subtle"
+          color="neutral"
+        >
+          {{ feature }}
+        </NuxtBadge>
       </div>
     </div>
   </div>
