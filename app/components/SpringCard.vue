@@ -12,14 +12,13 @@ const temperatureLabel = computed(() => {
 
 <template>
   <NuxtLink :to="`/springs/${spring.id}`">
-    <NuxtCard class="bg-emerald-800 rounded-2xl p-4 mb-4 ml-3">
+    <NuxtCard class="bg-emerald-800 rounded-2xl p-4 mb-4">
       <div>
-        <h3 class="underline">
-          {{ spring.name }} &#x2197;
+        <h3 class="underline flex items-center gap-1">
+          {{ spring.name }}
+          <NuxtIcon name="i-lucide-external-link" class="size-4" />
         </h3>
-        <span>
-          {{ spring.type }}
-        </span>
+        <BadgesSpringTypeBadge :type="spring.type" />
       </div>
  
       <p>

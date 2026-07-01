@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-01",
  
   css: ["~/assets/css/main.css"],
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", "@nuxt/icon"],
   ui: {
     prefix: 'Nuxt',
   },

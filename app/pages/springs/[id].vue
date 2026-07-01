@@ -24,9 +24,7 @@ if (error.value) {
         <h1>
           {{ spring.name }}
         </h1>
-        <span>
-          {{ spring.type }}
-        </span>
+        <BadgesSpringTypeBadge :type="spring.type" />
       </div>
       <p>
         {{ spring.description }}
