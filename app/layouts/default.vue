@@ -1,25 +1,15 @@
 <template>
-  <div>
+  <div class="flex min-h-screen flex-col">
     <header>
       <nav>
-        <NuxtLink to="/">
-          Hot Springs Finder
-        </NuxtLink>
-        <div>
-          <NuxtLink to="/springs">
-            Browse
-          </NuxtLink>
-          <!-- Auth links will go here -->
-        </div>
+        <NavBar />
       </nav>
     </header>
- 
-    <main>
+
+    <main class="flex-1">
       <slot />
     </main>
- 
-    <footer>
-      Hot Springs Finder &mdash; Built with Nuxt
-    </footer>
+
+    <VueFooter />
   </div>
 </template>

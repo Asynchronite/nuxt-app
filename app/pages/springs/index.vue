@@ -22,7 +22,7 @@ const { data: springs, status } = await useFetch("/api/springs", {
     </div>
  
     <!-- Results -->
-    <div v-else-if="springs?.length">
+    <div v-else-if="springs?.length" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <SpringCard v-for="spring in springs" :key="spring.id" :spring="spring" />
     </div>
  

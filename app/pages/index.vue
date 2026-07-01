@@ -8,11 +8,6 @@
         Discover hot springs around the world. Browse by region, temperature, or
         type. Save your favorites and track the ones you've visited.
       </p>
-      <div class="nav-class">
-        <NuxtLink to="/springs">
-          Browse Hot Springs
-        </NuxtLink>
-      </div>
     </section>
   </div>
 </template>

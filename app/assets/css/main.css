@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+h1 {
+    @apply text-3xl font-bold mb-4;
+}
+
+h3 {
+    @apply text-2xl font-semibold mb-2;
+}
+
+p {
+    @apply text-lg mb-4;
+}
