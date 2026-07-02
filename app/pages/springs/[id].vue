@@ -7,9 +7,17 @@ const { loggedIn } = useUserSession();
 const { data: spring, error } = await useFetch<Spring>(
   `/api/springs/${route.params.id}`
 );
+
 const { data: userVisited } = await useFetch("/api/user/visited", {
   default: () => [],
 });
+
+const { data: reviews, refresh: refreshReviews } = await useFetch(
+  `/api/springs/${route.params.id}/reviews`,
+  { default: () => [] }
+);
+ 
+const reviewBody = ref("");
  
 if (error.value) {
   throw createError({
@@ -34,7 +42,18 @@ async function toggleFavorite() {
     method: isFavorite.value ? "DELETE" : "POST",
   });
 
+  //@ts-ignore // odbija suradjivat jebiga
   userFavorites.value = await $fetch("/api/user/favorites");
+}
+
+async function submitReview() {
+  if (!spring.value || !reviewBody.value.trim()) return;
+  await $fetch(`/api/springs/${spring.value.id}/reviews`, {
+    method: "POST",
+    body: { body: reviewBody.value },
+  });
+  reviewBody.value = "";
+  await refreshReviews();
 }
  
 const isVisited = computed(() =>
@@ -119,6 +138,34 @@ async function toggleVisited() {
           {{ feature }}
         </NuxtBadge>
       </div>
+    </div>
+    
+    <div>
+      <h2>Reviews</h2>
+    
+      <form v-if="loggedIn" @submit.prevent="submitReview">
+        <textarea v-model="reviewBody" rows="3" placeholder="Share your experience at this spring..." />
+        <button type="submit" :disabled="!reviewBody.trim()">
+          Submit Review
+        </button>
+      </form>
+    
+      <div v-if="reviews?.length">
+        <div v-for="review in reviews" :key="review.id">
+          <div>
+            <span>
+              {{ review.author }}
+            </span>
+            <span>
+              {{ new Date(review.createdAt).toLocaleDateString() }}
+            </span>
+          </div>
+          <p>{{ review.body }}</p>
+        </div>
+      </div>
+      <p v-else>
+        No reviews yet. Be the first to share your experience.
+      </p>
     </div>
 
     <div v-if="loggedIn">
