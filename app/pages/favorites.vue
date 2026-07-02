@@ -20,22 +20,31 @@ const favoriteSprings = computed(() => {
   return allSprings.value?.filter((s) => favoriteIds.has(s.id)) ?? [];
 });
 </script>
-
+ 
 <template>
-  <div class="max-w-3xl mx-auto py-6">
-    <h1 class="mb-6">Your Favorite Springs</h1>
-    <div v-if="favoriteSprings.length === 0" class="text-muted">
-      You haven't added any springs to your favorites yet.
+  <div>
+    <div>
+      <h1>
+        Your Favorites
+      </h1>
+      <p>
+        {{ favoriteSprings.length }} saved spring{{
+          favoriteSprings.length === 1 ? "" : "s"
+        }}
+      </p>
     </div>
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <NuxtCard
-        v-for="spring in favoriteSprings"
-        :key="spring.id"
-        :to="`/springs/${spring.id}`"
-      >
-        <h2 class="mb-2">{{ spring.name }}</h2>
-        <p class="text-muted">{{ spring.description }}</p>
-      </NuxtCard>
+ 
+    <div v-if="favoriteSprings.length" class="flex flex-wrap gap-4">
+      <SpringCard v-for="spring in favoriteSprings" :key="spring.id" :spring="spring" />
+    </div>
+ 
+    <div v-else>
+      <p>
+        No favorites yet. Browse springs and save the ones that catch your eye.
+      </p>
+      <NuxtLink to="/springs">
+        Browse Hot Springs &rarr;
+      </NuxtLink>
     </div>
   </div>
 </template>

@@ -7,6 +7,9 @@ const { loggedIn } = useUserSession();
 const { data: spring, error } = await useFetch<Spring>(
   `/api/springs/${route.params.id}`
 );
+const { data: userVisited } = await useFetch("/api/user/visited", {
+  default: () => [],
+});
  
 if (error.value) {
   throw createError({
@@ -32,6 +35,20 @@ async function toggleFavorite() {
   });
 
   userFavorites.value = await $fetch("/api/user/favorites");
+}
+ 
+const isVisited = computed(() =>
+  userVisited.value?.some(
+    (v: { springId: string }) => v.springId === spring.value?.id
+  )
+);
+ 
+async function toggleVisited() {
+  if (!spring.value) return;
+  await $fetch(`/api/user/visited/${spring.value.id}`, {
+    method: isVisited.value ? "DELETE" : "POST",
+  });
+  userVisited.value = await $fetch("/api/user/visited");
 }
  
 </script>
@@ -112,6 +129,15 @@ async function toggleFavorite() {
         class="mt-4"
       >
         {{ isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+      </NuxtButton>
+
+      <NuxtButton
+        @click="toggleVisited"
+        :variant="isVisited ? 'solid' : 'outline'"
+        color="success"
+        class="mt-4 ml-2"
+      >
+        {{ isVisited ? 'Remove from Visited' : 'Add to Visited' }}
       </NuxtButton>
     </div>
   </div>
