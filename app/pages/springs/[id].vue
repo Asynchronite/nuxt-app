@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import type { Spring } from "~/types/spring";
+
 const route = useRoute();
- 
-const { data: spring, error } = await useFetch(
+const { loggedIn } = useUserSession();
+
+const { data: spring, error } = await useFetch<Spring>(
   `/api/springs/${route.params.id}`
 );
  
@@ -11,6 +14,26 @@ if (error.value) {
     statusMessage: "Spring not found",
   });
 }
+
+const { data: userFavorites } = await useFetch("/api/user/favorites", {
+  default: () => [],
+});
+ 
+const isFavorite = computed(() =>
+  userFavorites.value?.some(
+    (f: { springId: string }) => f.springId === spring.value?.id
+  )
+);
+ 
+async function toggleFavorite() {
+  if (!spring.value) return;
+  await $fetch<{ success: boolean }>(`/api/user/favorites/${spring.value.id}`, {
+    method: isFavorite.value ? "DELETE" : "POST",
+  });
+
+  userFavorites.value = await $fetch("/api/user/favorites");
+}
+ 
 </script>
 
 <template>
@@ -79,6 +102,17 @@ if (error.value) {
           {{ feature }}
         </NuxtBadge>
       </div>
+    </div>
+
+    <div v-if="loggedIn">
+      <NuxtButton
+        @click="toggleFavorite"
+        :variant="isFavorite ? 'solid' : 'outline'"
+        color="primary"
+        class="mt-4"
+      >
+        {{ isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+      </NuxtButton>
     </div>
   </div>
 </template>
