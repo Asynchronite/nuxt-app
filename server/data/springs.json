@@ -4,7 +4,7 @@
     "name": "Breitenbush Hot Springs",
     "description": "A rustic retreat nestled in old-growth forest along the Breitenbush River, popular for its mineral pools and clothing-optional soaking tradition.",
     "location": {
-      "region": "Oregon",
+      "region": "North America",
       "country": "USA",
       "lat": 44.7896,
       "lng": -121.9815
@@ -23,7 +23,7 @@
     "name": "Blue Lagoon",
     "description": "A world-famous geothermal spa set in a lava field, known for its milky-blue silica-rich waters.",
     "location": {
-      "region": "Reykjanes Peninsula",
+      "region": "Europe",
       "country": "Iceland",
       "lat": 63.8804,
       "lng": -22.4495
@@ -42,7 +42,7 @@
     "name": "Pamukkale",
     "description": "Striking white travertine terraces filled with mineral-laden thermal water, cascading down a hillside in western Turkey.",
     "location": {
-      "region": "Denizli",
+      "region": "Europe",
       "country": "Turkey",
       "lat": 37.9203,
       "lng": 29.1187
@@ -61,7 +61,7 @@
     "name": "Beppu Onsen",
     "description": "One of Japan's largest hot spring resort towns, famous for its 'eight hells' of colorful, non-bathable thermal features and countless public bathhouses.",
     "location": {
-      "region": "Oita Prefecture",
+      "region": "Asia-Pacific",
       "country": "Japan",
       "lat": 33.2846,
       "lng": 131.4913
@@ -80,7 +80,7 @@
     "name": "Grutas de Tolantongo",
     "description": "A canyon oasis of turquoise thermal pools, waterfalls, and a natural steam cave carved into the mountainside.",
     "location": {
-      "region": "Hidalgo",
+      "region": "Latin America",
       "country": "Mexico",
       "lat": 20.7333,
       "lng": -99.2833
@@ -99,7 +99,7 @@
     "name": "Terme di Saturnia",
     "description": "Free-flowing sulfurous cascades and pools in the Tuscan countryside, carved naturally into limestone rock.",
     "location": {
-      "region": "Tuscany",
+      "region": "Europe",
       "country": "Italy",
       "lat": 42.6494,
       "lng": 11.5136
@@ -118,7 +118,7 @@
     "name": "Rotorua Hot Springs",
     "description": "Geothermal wonderland in New Zealand's North Island, with mineral pools, mud pots, and Maori cultural heritage.",
     "location": {
-      "region": "Bay of Plenty",
+      "region": "Asia-Pacific",
       "country": "New Zealand",
       "lat": -38.1368,
       "lng": 176.2497
@@ -137,7 +137,7 @@
     "name": "Conundrum Hot Springs",
     "description": "A remote backcountry soak in the Maroon Bells-Snowmass Wilderness, reachable only by a strenuous 8.5-mile hike.",
     "location": {
-      "region": "Colorado",
+      "region": "North America",
       "country": "USA",
       "lat": 39.0392,
       "lng": -106.9019
@@ -156,7 +156,7 @@
     "name": "Banff Upper Hot Springs",
     "description": "A historic mountain-top pool with sweeping views of the Canadian Rockies, developed in the early 1900s.",
     "location": {
-      "region": "Alberta",
+      "region": "North America",
       "country": "Canada",
       "lat": 51.1636,
       "lng": -115.5497
@@ -175,7 +175,7 @@
     "name": "Chena Hot Springs",
     "description": "A remote Alaskan resort known for soaking under the northern lights and its geothermally powered ice museum.",
     "location": {
-      "region": "Alaska",
+      "region": "North America",
       "country": "USA",
       "lat": 65.0567,
       "lng": -146.0664
@@ -194,7 +194,7 @@
     "name": "Szechenyi Thermal Bath",
     "description": "One of Europe's largest thermal bath complexes, housed in a grand neo-baroque building with outdoor and indoor pools.",
     "location": {
-      "region": "Budapest",
+      "region": "Europe",
       "country": "Hungary",
       "lat": 47.5189,
       "lng": 19.0821
@@ -213,7 +213,7 @@
     "name": "Pendulum Cove",
     "description": "A volcanic beach on Deception Island in Antarctica, where geothermal heat warms the shallow shoreline waters amid ice and snow.",
     "location": {
-      "region": "South Shetland Islands",
+      "region": "Antarctica",
       "country": "Antarctica",
       "lat": -62.9614,
       "lng": -60.5606
@@ -232,7 +232,7 @@
     "name": "Krka Diana Pools",
     "description": "A lesser known set of thermally influenced pools tucked in karst terrain, favored by locals seeking a quiet natural soak.",
     "location": {
-      "region": "Sibenik-Knin",
+      "region": "Europe",
       "country": "Croatia",
       "lat": 43.7975,
       "lng": 15.9764
@@ -251,7 +251,7 @@
     "name": "Polichnitos Hot Springs",
     "description": "One of the hottest springs in Europe, located on the Greek island of Lesbos with a domed historic bathhouse.",
     "location": {
-      "region": "Lesbos",
+      "region": "Europe",
       "country": "Greece",
       "lat": 39.0833,
       "lng": 26.2
@@ -270,7 +270,7 @@
     "name": "Tabacon Hot Springs",
     "description": "River-fed thermal pools warmed by the Arenal Volcano, surrounded by lush rainforest gardens.",
     "location": {
-      "region": "Alajuela",
+      "region": "Latin America",
       "country": "Costa Rica",
       "lat": 10.4631,
       "lng": -84.6614
@@ -289,7 +289,7 @@
     "name": "Puyuhuapi Hot Springs",
     "description": "A remote Patagonian lodge accessible only by boat, with fjord-side thermal pools framed by temperate rainforest.",
     "location": {
-      "region": "Aysen",
+      "region": "Latin America",
       "country": "Chile",
       "lat": -44.3167,
       "lng": -72.55
@@ -308,7 +308,7 @@
     "name": "Yangbajing Hot Springs",
     "description": "High-altitude geothermal field on the Tibetan Plateau, one of the highest elevation hot spring areas in the world.",
     "location": {
-      "region": "Tibet",
+      "region": "Asia-Pacific",
       "country": "China",
       "lat": 30.0167,
       "lng": 90.5667

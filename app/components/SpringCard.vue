@@ -18,18 +18,15 @@ const temperatureLabel = computed(() => {
           {{ spring.name }}
           <NuxtIcon name="i-lucide-external-link" class="size-4" />
         </h3>
-        <BadgesSpringTypeBadge :type="spring.type" />
+        <div>
+          <BadgesSpringTypeBadge :type="spring.type" class="mr-1.5"/>
+          <BadgesSpringRegionBadge :region="spring.location.region.toLowerCase()" />
+        </div>
       </div>
  
       <p>
         {{ spring.description.slice(0, 120) }}...
       </p>
- 
-      <div>
-        <span>{{ spring.location.region }}, {{ spring.location.country }}</span>
-        <span>{{ temperatureLabel }}</span>
-        <span>{{ spring.elevation.toLocaleString() }} ft</span>
-      </div>
     </NuxtCard>
   </NuxtLink>
 </template>

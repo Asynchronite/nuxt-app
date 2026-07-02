@@ -1,12 +1,44 @@
 <script setup lang="ts">
-import FoundBadge from '~/components/badges/search/FoundBadge.vue';
-import LoadingStateBadge from '~/components/badges/search/LoadingStateBadge.vue';
-import NotFoundBadge from '~/components/badges/search/NotFoundBadge.vue';
+  import FoundBadge from '~/components/badges/search/FoundBadge.vue';
+  import LoadingStateBadge from '~/components/badges/search/LoadingStateBadge.vue';
+  import NotFoundBadge from '~/components/badges/search/NotFoundBadge.vue';
 
-const { data: springs, status } = await useFetch("/api/springs", {
-  lazy: true,
-  server: false,
-});
+  const search = ref("");
+  const debouncedSearch = ref("");
+  const region = ref("");
+  const type = ref("");
+
+  let searchDebounceTimer: ReturnType<typeof setTimeout>;
+  watch(search, (value) => {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      debouncedSearch.value = value;
+    }, 400);
+  });
+
+  const queryParams = computed(() => {
+    const params: Record<string, string> = {};
+    if (debouncedSearch.value) params.search = debouncedSearch.value;
+    if (region.value) params.region = region.value;
+    if (type.value) params.type = type.value;
+    return params;
+  });
+  
+  const regions = [
+    "North America",
+    "Europe",
+    "Asia-Pacific",
+    "Latin America",
+    "Antarctica",
+  ];
+  
+  const types = ["Wild", "Developed", "Resort"];
+
+  const { data: springs, status } = await useFetch("/api/springs", {
+    query: queryParams,
+    lazy: true,
+    server: false,
+  });
 </script>
 
 <template>
@@ -15,6 +47,20 @@ const { data: springs, status } = await useFetch("/api/springs", {
       <h1>
         Browse Hot Springs
       </h1>
+    </div>
+
+    <div class="flex mb-2">
+      <NuxtInput v-model="search" type="text" placeholder="Search by name" class="mr-1"/>
+
+      <NuxtButton icon="i-lucide-trash" size="md" color="error" variant="ghost" @click="search = ''; region = ''; type = ''">
+        Clear filters
+      </NuxtButton>
+    </div>
+
+    <div class="flex mb-2">
+      <NuxtSelectMenu v-model="region" placeholder="All regions" :items="regions" class="mr-1.5" />
+ 
+      <NuxtSelectMenu v-model="type" placeholder="All types" :items="types" />
     </div>
  
     <!-- Loading state -->
