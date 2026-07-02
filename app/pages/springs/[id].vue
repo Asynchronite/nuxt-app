@@ -4,6 +4,8 @@ import type { Spring } from "~/types/spring";
 const route = useRoute();
 const { loggedIn } = useUserSession();
 
+const toast = useToast();
+
 const { data: spring, error } = await useFetch<Spring>(
   `/api/springs/${route.params.id}`
 );
@@ -53,6 +55,12 @@ async function submitReview() {
     body: { body: reviewBody.value },
   });
   reviewBody.value = "";
+
+  toast.add({
+    title: "Review submitted",
+    description: "Thank you for sharing your experience!",
+  })
+
   await refreshReviews();
 }
  
@@ -143,11 +151,11 @@ async function toggleVisited() {
     <div>
       <h2>Reviews</h2>
     
-      <form v-if="loggedIn" @submit.prevent="submitReview">
-        <textarea v-model="reviewBody" rows="3" placeholder="Share your experience at this spring..." />
-        <button type="submit" :disabled="!reviewBody.trim()">
+      <form v-if="loggedIn" @submit.prevent="submitReview" >
+        <NuxtTextarea v-model="reviewBody" color="info" variant="subtle"  placeholder="Share your experience at this spring..." />
+        <NuxtButton type="submit" :disabled="!reviewBody.trim()" class="flex flex-col gap-2 mb-4 mt-3">
           Submit Review
-        </button>
+        </NuxtButton>
       </form>
     
       <div v-if="reviews?.length">
