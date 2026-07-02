@@ -10,7 +10,16 @@ export default defineNuxtConfig({
   ui: {
     prefix: 'Nuxt',
   },
- 
+
+  routeRules: {
+    "/": { prerender: true },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+    },
+  },
+  
   vite: {
     plugins: [tailwindcss()],
   },
